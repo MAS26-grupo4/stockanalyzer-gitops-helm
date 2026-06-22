@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: stockanalyzer-dev
+  name: stockanalyzer-prod
   namespace: argocd
 spec:
   project: default
@@ -11,10 +11,10 @@ spec:
     path: charts/stockanalyzer
     helm:
       valueFiles:
-        - /environments/dev/values.yaml
+        - /environments/prod/values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: stockanalyzer-dev
+    namespace: stockanalyzer-prod
   syncPolicy:
     automated:
       prune: true

@@ -1,4 +1,4 @@
-name: Helm Lint and Template
+name: Helm gitOps con ArgoCD - Diplomado
 
 on:
   push:
@@ -22,13 +22,13 @@ jobs:
       - name: Helm template (default values)
         run: helm template stockanalyzer ./charts/stockanalyzer
 
-      - name: Helm template (dev)
+      - name: Helm template (dev - desarrollo)
         run: |
           helm template stockanalyzer ./charts/stockanalyzer \
             -f charts/stockanalyzer/values.yaml \
             -f environments/dev/values.yaml
 
-      - name: Helm template (prod)
+      - name: Helm template (prod - producción)
         run: |
           helm template stockanalyzer ./charts/stockanalyzer \
             -f charts/stockanalyzer/values.yaml \

@@ -41,9 +41,9 @@ helm template stockanalyzer ./charts/stockanalyzer \
   -f charts/stockanalyzer/values.yaml \
   -f environments/dev/values.yaml
 
-# Desplegar a un clúster (ej. minikube)
+# Desplegar dev a un clúster (ej. minikube local)
 helm upgrade --install stockanalyzer ./charts/stockanalyzer \
-  -n stockanalyzer --create-namespace \
+  -n stockanalyzer-dev --create-namespace \
   -f charts/stockanalyzer/values.yaml \
   -f environments/dev/values.yaml
 ```
@@ -54,7 +54,7 @@ helm upgrade --install stockanalyzer ./charts/stockanalyzer \
 |---|---|---|---|
 | `default` (values.yaml) | 2 | v1.1.0 | 2-5, CPU 70% |
 | `dev` | 1 | dev-latest (pullPolicy: Always) | deshabilitado |
-| `prod` | 3 | v1.3.0 (pullPolicy: IfNotPresent) | 3-10, CPU 70% |
+| `prod` | 2 | v1.1.0 (pullPolicy: IfNotPresent) | 2-5, CPU 70% |
 
 ## CI/CD
 
