@@ -6,8 +6,8 @@
 replicaCount: 1
 
 image:
-  tag: dev-f7b391c
-  pullPolicy: Always
+  tag: v1.1.0
+  pullPolicy: IfNotPresent
 
 autoscaling:
   enabled: false
