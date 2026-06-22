@@ -1,0 +1,13 @@
+# Development environment overrides
+# Used with: helm upgrade --install stockanalyzer ./charts/stockanalyzer \
+#             -f charts/stockanalyzer/values.yaml \
+#             -f environments/dev/values.yaml
+
+replicaCount: 1
+
+image:
+  tag: dev-latest
+  pullPolicy: Always
+
+autoscaling:
+  enabled: false

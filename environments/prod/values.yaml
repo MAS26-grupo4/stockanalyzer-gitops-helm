@@ -1,0 +1,15 @@
+# Production environment overrides
+# Used with: helm upgrade --install stockanalyzer ./charts/stockanalyzer \
+#             -f charts/stockanalyzer/values.yaml \
+#             -f environments/prod/values.yaml
+
+replicaCount: 3
+
+image:
+  tag: v1.3.0
+  pullPolicy: IfNotPresent
+
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 10

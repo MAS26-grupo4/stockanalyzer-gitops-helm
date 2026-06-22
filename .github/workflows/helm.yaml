@@ -1,0 +1,35 @@
+name: Helm Lint and Template
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.16.2
+
+      - name: Helm lint
+        run: helm lint ./charts/stockanalyzer
+
+      - name: Helm template (default values)
+        run: helm template stockanalyzer ./charts/stockanalyzer
+
+      - name: Helm template (dev)
+        run: |
+          helm template stockanalyzer ./charts/stockanalyzer \
+            -f charts/stockanalyzer/values.yaml \
+            -f environments/dev/values.yaml
+
+      - name: Helm template (prod)
+        run: |
+          helm template stockanalyzer ./charts/stockanalyzer \
+            -f charts/stockanalyzer/values.yaml \
+            -f environments/prod/values.yaml
