@@ -6,7 +6,7 @@
 replicaCount: 1
 
 image:
-  tag: dev-latest
+  tag: dev-f7b391c
   pullPolicy: Always
 
 autoscaling:
