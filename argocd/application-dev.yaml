@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stockanalyzer-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/MAS26-grupo4/stockanalyzer-gitops-helm.git
+    targetRevision: main
+    path: charts/stockanalyzer
+    helm:
+      valueFiles:
+        - /environments/dev/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: stockanalyzer
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
