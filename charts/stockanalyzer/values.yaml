@@ -9,7 +9,6 @@ image:
 replicaCount: 2
 
 namespace:
-  name: stockanalyzer
   create: true
 
 container:
