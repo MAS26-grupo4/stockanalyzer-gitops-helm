@@ -6,10 +6,10 @@
 replicaCount: 2
 
 image:
-  tag: v1.1.0
+  tag: v1.2.0
   pullPolicy: IfNotPresent
 
 autoscaling:
   enabled: true
-  minReplicas: 2
+  minReplicas: 3
   maxReplicas: 5
