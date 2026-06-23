@@ -3,7 +3,7 @@
 #             -f charts/stockanalyzer/values.yaml \
 #             -f environments/prod/values.yaml
 
-replicaCount: 3
+replicaCount: 2
 
 image:
   tag: v1.1.0
